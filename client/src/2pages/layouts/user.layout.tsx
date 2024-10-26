@@ -9,7 +9,6 @@ import {
   Footer,
   BrandLink,
   NewArticleLink,
-  SettingsProfileLink,
   ProfileLink,
 } from './layout.ui'
 
@@ -59,11 +58,7 @@ const UserNavigation = enhance(() => {
           <NewArticleLink />
         </li>
       )}
-      {canUpdateProfile && (
-        <li className="nav-item">
-          <SettingsProfileLink />
-        </li>
-      )}
+
       {canUpdateProfile && (
         <li className="nav-item">
           <ProfileLink />
