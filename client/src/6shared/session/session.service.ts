@@ -75,10 +75,10 @@ const sessionPermission: SessionPermission = {
 
 type NestedKeysWithField<T, F extends keyof any> = {
   [K in keyof T]: T[K] extends { [key in F]: any }
-    ? K
-    : T[K] extends object
-      ? NestedKeysWithField<T[K], F>
-      : never
+  ? K
+  : T[K] extends object
+  ? NestedKeysWithField<T[K], F>
+  : never
 }[keyof T]
 
 export class PermissionService {
@@ -86,7 +86,7 @@ export class PermissionService {
     T extends Action,
     Resource extends NestedKeysWithField<SessionPermission, T>,
     ConditionalContext extends ConditionalPermissionContext<T, Resource>,
-  >(action: T, resource: Resource, context?: ConditionalContext): boolean {
+    >(action: T, resource: Resource, context?: ConditionalContext): boolean {
     const session = useSessionStore.use.session()
     const role = PermissionService.getRole({ context, session })
 
@@ -98,7 +98,7 @@ export class PermissionService {
     T extends Action,
     Resource extends NestedKeysWithField<SessionPermission, T>,
     ConditionalContext extends ConditionalPermissionContext<T, Resource>,
-  >(action: T, resource: Resource, context?: ConditionalContext): boolean {
+    >(action: T, resource: Resource, context?: ConditionalContext): boolean {
     const role = this.getRole({ context })
 
     // @ts-expect-error
