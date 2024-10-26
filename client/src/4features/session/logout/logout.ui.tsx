@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { pathKeys } from '~6shared/lib/react-router'
 import { useLogoutMutation } from './logout.mutation'
 
@@ -16,12 +16,11 @@ export function LogoutButton() {
   }
 
   return (
-    <button
-      className="btn btn-outline-danger"
-      type="button"
+    <NavLink
+      to=""
       onClick={handleClick}
     >
-      Or click here to logout.
-    </button>
+      Logout
+    </NavLink>
   )
 }
