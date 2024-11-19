@@ -7,7 +7,6 @@ import { GoogleLogin } from './auth'
 import { Provider } from './providers'
 import './main.css'
 
-
 window.addEventListener('error', (event) => {
   if (axios.isAxiosError(event.error)) {
     event.preventDefault()

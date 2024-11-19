@@ -28,6 +28,13 @@ export default defineConfig(({ mode }) => ({
         },
       }),
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "bootstrap/scss/bootstrap.scss";`
+        }
+      }
+    }
   }),
   test: {
     environment: 'jsdom',
