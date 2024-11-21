@@ -12,47 +12,40 @@ interface IModal {
 export function Modal(props: IModal) {
     const { title, body, footer, onClose, show, setShow } = props
 
-
     const handleClose = () => {
         setShow(false);
         if (onClose) onClose();
     };
 
-
     return (
         show && (
             <div
-                className="modal fade in"
+                className="modal"
                 style={{ display: 'block' }}
             >
+                <div className="modal-dialog">
+                    <div className="modal-content">
 
-                <div
-                    className="modal-dialog">
-                    <div
-                        className="modal-content">
-                        <div
-                            className="modal-header">
-                            <h5
-                                className="modal-title"
-                            >
-                                {title}
-                            </h5>
-                            <button
-                                type="button"
-                                className="close"
-                                onClick={onClose}>
-                                &times;
-                            </button>
+                        <div className="modal-header">
+                            <div className="d-flex align-items-center justify-content-center">
+                                <h5 className="modal-title text-primary">{title}</h5>
+                                <button
+                                    type="button"
+                                    className="close"
+                                    onClick={onClose}
+                                >
+                                    &times;
+                                </button>
+                            </div>
                         </div>
-                        <div
-                            className="modal-body">
-                            {body}
-                        </div>
+
+                        <div className="modal-body">{body}</div>
+
                         <div className="modal-footer">
                             {footer}
                             <button
                                 type="button"
-                                className="btn btn-secondary"
+                                className="btn btn-danger"
                                 onClick={handleClose}
                             >
                                 Cancelar

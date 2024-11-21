@@ -33,8 +33,6 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
   const handleClick = () => {
     // mutate(slug)
     setShowModal(!showModal)
-    console.log('button delete clicked')
-    console.log(showModal)
   }
 
   return (
