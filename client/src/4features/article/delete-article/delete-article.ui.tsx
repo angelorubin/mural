@@ -14,7 +14,7 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
 
   const navigate = useNavigate()
 
-  const { isPending } = useDeleteArticleMutation({
+  const { mutate, isPending } = useDeleteArticleMutation({
     mutationKey: [slug],
 
     onMutate: () => {
@@ -30,15 +30,18 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
     },
   })
 
-  const handleClick = () => {
-    // mutate(slug)
+  const handleClickModal = () => {
     setShowModal(!showModal)
+  }
+
+  const handleClick = () => {
+    mutate(slug)
   }
 
   return (
     <>
       <button
-        onClick={handleClick}
+        onClick={handleClickModal}
         className="btn btn-outline-danger btn-sm"
         type="button"
         disabled={isPending}
@@ -50,9 +53,18 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
       <Modal
         show={showModal}
         setShow={setShowModal}
-        title="Example Modal"
-        body={<p>This is the body of the modal.</p>}
-        footer=""
+        title="Apagar Artigo"
+        body={
+          <p className="text-dark">Você tem certeza que deseja excluir <span className="text-danger">permanentemente</span>?</p>
+        }
+        footer={
+          <button
+            type="button"
+            className="btn btn-danger ml-2"
+            onClick={handleClick}>
+            Excluir
+          </button>
+        }
         onClose={() => console.log('Modal closed')}
       />
     </>
