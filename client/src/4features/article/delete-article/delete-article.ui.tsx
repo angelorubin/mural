@@ -53,7 +53,7 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
       <Modal
         show={showModal}
         setShow={setShowModal}
-        title="Apagar Artigo"
+        title="Deletar artigo"
         body={
           <p className="text-dark">Você tem certeza que deseja excluir <span className="text-danger">permanentemente</span>?</p>
         }
@@ -65,7 +65,6 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
             Excluir
           </button>
         }
-        onClose={() => console.log('Modal closed')}
       />
     </>
   )

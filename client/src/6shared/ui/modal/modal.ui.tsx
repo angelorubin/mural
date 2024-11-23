@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { ModalHeader } from "./header.ui";
 
 interface IModal {
     title: string;
@@ -26,18 +27,10 @@ export function Modal(props: IModal) {
                 <div className="modal-dialog">
                     <div className="modal-content">
 
-                        <div className="modal-header">
-                            <div className="d-flex">
-                                <h5 className="modal-title text-primary">{title}</h5>
-                                <button
-                                    type="button"
-                                    className="close"
-                                    onClick={onClose}
-                                >
-                                    &times;
-                                </button>
-                            </div>
-                        </div>
+                        <ModalHeader
+                            title={title}
+                            onClose={onClose}
+                        />
 
                         <div className="modal-body">
                             <p>{body}</p>
