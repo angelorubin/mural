@@ -44,11 +44,11 @@ export const ArticlePage = enhance(() => {
     <div className="article-page">
       <div className="banner">
         <div className="container">
-        {article.image && <img
-          src={article.image}
-          className="article-img-feed"
-          alt="foto"
-        />}
+          {article.image && <img
+            src={article.image}
+            className="article-img-feed"
+            alt="foto"
+          />}
           <h1>{article.title}</h1>
           <ArticleMeta
             article={article}
@@ -225,7 +225,7 @@ function ToggleFavoriteArticle(props: { article: articleTypes.Article }) {
     <>
       {canLike && <FavoriteArticleExtendedButton article={article} />}
       {canDislike && <UnfavoriteArticleExtendedButton article={article} />}
-      {cannotLikeOrDislike && <NavigateToLoginButtonFavorite favoritesCount={favoritesCount}/>}
+      {cannotLikeOrDislike && <NavigateToLoginButtonFavorite favoritesCount={favoritesCount} />}
     </>
   )
 }
