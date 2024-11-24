@@ -1,17 +1,18 @@
 import { ReactNode } from "react";
-import { ModalHeader } from "./header.ui";
+import { ModalHeader } from "./modal-header.ui";
 
 interface IModal {
+    id: string;
     title: string;
     body: ReactNode;
     footer: ReactNode;
-    onClose?: () => void;
     show: boolean;
     setShow: (show: boolean) => void;
+    onClose?: any;
 }
 
 export function Modal(props: IModal) {
-    const { title, body, footer, onClose, show, setShow } = props
+    const { id, title, body, show, onClose, footer, setShow } = props
 
     const handleClose = () => {
         setShow(!show);
@@ -20,33 +21,37 @@ export function Modal(props: IModal) {
 
     return (
         show && (
-            <div className="modal show"
-                style={{ display: 'block' }}
-                role="dialog"
+            <div
+                id={id}
+                className={`modal ${show ? 'show' : ''}`}
+                style={{ display: show ? 'block' : 'none' }}
             >
-                <div className="modal-dialog">
+                <div
+                    className="modal-dialog modal-dialog-centered"
+                >
                     <div className="modal-content">
 
                         <ModalHeader
                             title={title}
-                            onClose={onClose}
+                            onClose={handleClose}
                         />
 
-                        <div className="modal-body">
-                            <p>{body}</p>
+                        <div
+                            className="modal-body">
+                            {body}
                         </div>
 
-                        <div className="modal-footer">
-                            <div className='d-flex gap-3'>
-                                {footer}
-                                <button
-                                    type="button"
-                                    className="btn btn-primary mr-2"
-                                    onClick={handleClose}
-                                >
-                                    Cancelar
-                                </button>
-                            </div>
+                        <div
+                            className="modal-footer">
+                            <button
+                                type="button"
+                                className="btn btn-secondary"
+                                data-dismiss="modal"
+                                onClick={handleClose}
+                            >
+                                Cancelar
+                            </button>
+                            {footer}
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,6 @@ import { pathKeys } from '~6shared/lib/react-router'
 import { PermissionService } from '~6shared/session'
 import { Button } from '~6shared/ui/button'
 import { ErrorHandler, logError } from '~6shared/ui/error-handler'
-import { Modal } from '~6shared/ui/modal'
 import { ArticleQueries, articleTypes } from '~5entities/article'
 import { profileTypes } from '~5entities/profile'
 import {
@@ -21,7 +20,6 @@ import { CommentsFeed } from '~3widgets/comments-feed'
 import { ArticleLoaderData } from './article-page.model'
 import { ArticlePageSkeleton } from './article-page.skeleton'
 import "./articles-page.css"
-
 
 const enhance = compose(
   (component) =>
@@ -75,21 +73,6 @@ export const ArticlePage = enhance(() => {
             </ul>
           </div>
         </div>
-
-        <button
-          type="button"
-          className="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          Launch Modal
-        </button>
-
-        <Modal
-          id="exampleModal"
-          title="Example Modal">
-          <p>Modal body content goes here.</p>
-        </Modal>
 
         <hr />
 

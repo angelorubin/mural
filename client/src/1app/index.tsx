@@ -1,12 +1,13 @@
 import axios from 'axios'
+import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './main.css'
 import ReactDOM from 'react-dom/client'
 import { realworld, handleGenericError } from '~6shared/api'
 import { pathKeys } from '~6shared/lib/react-router'
 import { useSessionStore } from '~6shared/session'
 import { GoogleLogin } from './auth'
 import { Provider } from './providers'
-import './main.css'
-
 
 window.addEventListener('error', (event) => {
   if (axios.isAxiosError(event.error)) {

@@ -10,7 +10,7 @@ type DeleteArticleButtonProps = { slug: string }
 
 export function DeleteArticleButton(props: DeleteArticleButtonProps) {
   const { slug } = props
-  const [showModal, setShowModal] = useState(false);
+  const [showArticleModal, setShowArticleModal] = useState(false);
 
   const navigate = useNavigate()
 
@@ -30,18 +30,26 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
     },
   })
 
-  const handleClickModal = () => {
-    setShowModal(!showModal)
+  const handleClickOpenModal = () => {
+    setShowArticleModal(!showArticleModal)
   }
 
-  const handleClick = () => {
+  const handleClickDeleteArticle = () => {
     mutate(slug)
+    const backdrop = document.querySelector('.modal-backdrop');
+    if (backdrop) {
+      backdrop.parentNode.removeChild(backdrop);
+    }
+    document.body.classList.remove('modal-open');
+    setShowArticleModal(!showArticleModal);
   }
 
   return (
     <>
       <button
-        onClick={handleClickModal}
+        onClick={handleClickOpenModal}
+        data-toggle="modal"
+        data-target="#delete-article"
         className="btn btn-outline-danger btn-sm"
         type="button"
         disabled={isPending}
@@ -51,17 +59,21 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
       </button>
 
       <Modal
-        show={showModal}
-        setShow={setShowModal}
-        title="Deletar artigo"
+        id="delete-article"
+        show={showArticleModal}
+        setShow={setShowArticleModal}
+        title="Excluir artigo"
         body={
-          <p className="text-dark">Você tem certeza que deseja excluir <span className="text-danger">permanentemente</span>?</p>
+          <p className="text-dark text-left">Você tem certeza que deseja excluir
+            <span className="text-danger font-weight-bold"> permanentemente</span> o artigo
+            <span className="text-dark"> Teste2</span>?
+          </p>
         }
         footer={
-          <button
-            type="button"
-            className="btn btn-danger ml-2"
-            onClick={handleClick}>
+          <button type="button"
+            className="btn btn-primary"
+            onClick={handleClickDeleteArticle}
+          >
             Excluir
           </button>
         }
