@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { IoTrash } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
 import { pathKeys } from '~6shared/lib/react-router'
-import { Modal } from '~6shared/ui/modal'
+// import { Modal } from '~6shared/ui/modal'
+import { CustomDialog } from '~6shared/ui/dialog'
 import { spinnerModel } from '~6shared/ui/spinner'
 import { useDeleteArticleMutation } from './delete-article.mutation'
 
@@ -14,7 +15,7 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
 
   const navigate = useNavigate()
 
-  const { mutate, isPending } = useDeleteArticleMutation({
+  const { isPending } = useDeleteArticleMutation({
     mutationKey: [slug],
 
     onMutate: () => {
@@ -34,6 +35,7 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
     setShowArticleModal(!showArticleModal)
   }
 
+  /**
   const handleClickDeleteArticle = () => {
     mutate(slug)
     const backdrop = document.querySelector('.modal-backdrop');
@@ -43,6 +45,7 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
     document.body.classList.remove('modal-open');
     setShowArticleModal(!showArticleModal);
   }
+  */
 
   return (
     <>
@@ -58,6 +61,9 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
         &nbsp;Delete Article
       </button>
 
+      <CustomDialog />
+
+      {/**
       <Modal
         id="delete-article"
         show={showArticleModal}
@@ -78,6 +84,7 @@ export function DeleteArticleButton(props: DeleteArticleButtonProps) {
           </button>
         }
       />
+      */}
     </>
   )
 }
